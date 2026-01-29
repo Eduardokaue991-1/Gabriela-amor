@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gabriela - O Amor, o Lobo e o Cachorro ❤️🐺🐶</title>
+
+<style>
+/* =============== RESET =============== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #000000 0%, #111111 100%);
+  color: #f0e9e9;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  user-select: none;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ================== LAYOUT ================== */
+.wrapper {
+  max-width: 900px;
+  margin: 60px auto 90px;
+  background: rgba(20, 20, 20, 0.75);
+  border-radius: 32px;
+  padding: 50px 60px 80px;
+  border: 3px solid #ff1f3d;
+  box-shadow: 0 0 18px #ff1f3d, 0 0 40px #ff1f3d, inset 0 0 18px #ff1f3d;
+  backdrop-filter: blur(18px);
+}
+
+/* ================== TÍTULOS ================== */
+h1 {
+  font-size: 3.8rem;
+  color: #ff1f3d;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: 0 0 18px #ff1f3d;
+  margin-bottom: 40px;
+}
+h2.section-title {
+  font-size: 2.8rem;
+  color: #ff5a6e;
+  font-weight: 900;
+  margin: 70px 0 30px;
+  text-align: center;
+  text-shadow: 0 0 14px #ff1f3d;
+}
+
+/* ================== POEMAS ================== */
+.poem-block {
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 2.1;
+  font-size: 1.25rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s ease forwards;
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================== BOTÃO SURPRESA ================== */
+.btn-main {
+  display: block;
+  margin: 70px auto 0;
+  background: #ff1f3d;
+  border-radius: 48px;
+  padding: 20px 65px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 0 36px #ff1f3d;
+  transition: all 0.35s ease;
+  text-align: center;
+  width: fit-content;
+}
+.btn-main:hover {
+  background: white;
+  color: #ff1f3d;
+  transform: scale(1.12);
+  box-shadow: 0 0 56px #ff1f3d;
+}
+
+/* ================== FUNDO ================== */
+#rainWords {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.rainWord {
+  position: absolute;
+  font-weight: 800;
+  color: #ff1f3d;
+  opacity: 0.25;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh); opacity: 0; }
+}
+
+/* ================== RODAPÉ ================== */
+footer {
+  text-align: center;
+  padding: 18px;
+  font-size: 1rem;
+  color: #ff1f3d;
+  text-shadow: 0 0 14px #ff1f3d;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #000;
+}
+</style>
+</head>
+
+<body>
+
+<div id="rainWords"></div>
+
+<main class="wrapper">
+
+<h1>Gabriela, o amor eterno ❤️</h1>
+
+<section>
+<h2 class="section-title">Lobo e Cachorro</h2>
+<p class="poem-block" style="animation-delay:0.4s;">No silêncio da noite, o lobo uiva,</p>
+<p class="poem-block" style="animation-delay:1.2s;">Protegendo a alcateia com olhar que brilha,</p>
+<p class="poem-block" style="animation-delay:2.0s;">Fiel e forte, nunca desvia,</p>
+<p class="poem-block" style="animation-delay:2.8s;">Assim como eu, que em você confia.</p>
+</section>
+
+<section>
+<h2 class="section-title">Amor de Cachorro</h2>
+<p class="poem-block" style="animation-delay:3.8s;">No olhar sincero do cachorro, há carinho,</p>
+<p class="poem-block" style="animation-delay:4.6s;">Lealdade pura, um amor que é caminho,</p>
+<p class="poem-block" style="animation-delay:5.4s;">Com você, Gabriela, encontro abrigo,</p>
+<p class="poem-block" style="animation-delay:6.2s;">No seu abraço, todo perigo é vencido.</p>
+</section>
+
+<section>
+<h2 class="section-title">Promessa</h2>
+<p class="poem-block" style="animation-delay:7.2s;">Prometo ser cuidado, força e calor,</p>
+<p class="poem-block" style="animation-delay:8.0s;">Ser riso nos dias bons, apoio na dor,</p>
+<p class="poem-block" style="animation-delay:8.8s;">Entre lobo e cachorro, meu coração diz:</p>
+<p class="poem-block" style="animation-delay:9.6s;">Meu lugar no mundo é te fazer feliz.</p>
+</section>
+
+<!-- BOTÃO COM LINK -->
+<a 
+  href="https://gifft.me/pt/o/l/yjehm15w7w3a57k2wk3r1g4h"
+  target="_blank"
+  class="btn-main">
+  Clique aqui para sua surpresa, Gabriela 💖
+</a>
+
+</main>
+
+<footer>
+Feito com ❤️ para Gabriela — 2026
+</footer>
+
+<script>
+/* CHUVA DE PALAVRAS */
+const rain = document.getElementById('rainWords');
+const words = ["Amor","Carinho","Lealdade","Paixão","Proteção","Abraço","Eternidade"];
+setInterval(() => {
+  const w = document.createElement("div");
+  w.className = "rainWord";
+  w.textContent = words[Math.floor(Math.random()*words.length)];
+  w.style.left = Math.random()*100 + "vw";
+  w.style.top = "-2rem";
+  w.style.fontSize = (14 + Math.random()*20) + "px";
+  w.style.animationDuration = (6 + Math.random()*6) + "s";
+  rain.appendChild(w);
+  setTimeout(() => w.remove(), 12000);
+}, 300);
+
+/* MÚSICA AUTOMÁTICA */
+const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/10/09/audio_1c3dbb6b6f.mp3");
+audio.loop = true;
+audio.volume = 0.12;
+window.addEventListener("click", () => {
+  if (audio.paused) audio.play().catch(()=>{});
+});
+</script>
+
+</body>
+</html>
