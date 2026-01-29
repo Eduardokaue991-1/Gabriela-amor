@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gabriela - O Amor, o Lobo e o Cachorro ❤️🐺🐶</title>
+
+<style>
+/* =============== RESET COMPLETO =============== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #000000 0%, #111111 100%);
+  color: #f0e9e9;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+/* Links padrões */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/* Botões padrões */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+
+/* ================== LAYOUT GERAL ================== */
+.wrapper {
+  max-width: 900px;
+  margin: 60px auto 90px;
+  background: rgba(20, 20, 20, 0.75);
+  border-radius: 32px;
+  padding: 50px 60px 80px 60px;
+  border: 3px solid #ff1f3d;
+  box-shadow:
+    0 0 18px #ff1f3d,
+    0 0 40px #ff1f3d,
+    inset 0 0 18px #ff1f3d;
+  backdrop-filter: blur(18px);
+  position: relative;
+  z-index: 10;
+}
+
+/* Títulos */
+h1 {
+  font-size: 3.8rem;
+  color: #ff1f3d;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: 0 0 18px #ff1f3d;
+  margin-bottom: 40px;
+  user-select: text;
+}
+h2.section-title {
+  font-size: 2.8rem;
+  color: #ff5a6e;
+  font-weight: 900;
+  margin: 70px 0 30px 0;
+  text-align: center;
+  text-shadow: 0 0 14px #ff1f3d;
+  user-select: text;
+}
+
+/* ================== POEMAS ================== */
+.poem-block {
+  max-width: 720px;
+  margin: 0 auto 10px auto;
+  color: #e4dada;
+  line-height: 2.15;
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  user-select: text;
+  opacity: 0;
+  transform: translateY(20px);
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+.poem-block:nth-child(odd) {
+  color: #fff2f2;
+}
+.poem-highlight {
+  color: #ff1f3d;
+  font-weight: 800;
+  text-shadow: 0 0 10px #ff1f3d;
+}
+
+/* Efeito fade-up com delay variável via JS */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================== BOTÕES =============== */
+.btn-main {
+  display: block;
+  margin: 60px auto 0 auto;
+  background: #ff1f3d;
+  border-radius: 48px;
+  padding: 20px 65px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 0 36px #ff1f3d;
+  transition: background-color 0.35s ease, transform 0.3s ease;
+  user-select: none;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+}
+.btn-main:hover,
+.btn-main:focus {
+  background: white;
+  color: #ff1f3d;
+  transform: scale(1.12);
+  box-shadow: 0 0 56px #ff1f3d;
+  outline: none;
+}
+
+/* ================== SEÇÕES ================== */
+section {
+  position: relative;
+  padding-bottom: 15px;
+}
+
+/* ================== CONTAINER MASCOTES SVG =============== */
+#mascotesContainer {
+  margin: 80px auto 0 auto;
+  max-width: 750px;
+  display: flex;
+  justify-content: center;
+  gap: 75px;
+  flex-wrap: wrap;
+  user-select: none;
+}
+svg.mascote {
+  width: 180px;
+  height: 180px;
+  filter: drop-shadow(0 0 22px #ff1f3d);
+  cursor: pointer;
+  transition: transform 0.55s ease;
+}
+svg.mascote:hover {
+  transform: scale(1.15) rotate(6deg);
+}
+svg.mascote path,
+svg.mascote circle {
+  fill: #ff1f3d;
+}
+svg.mascote .fillBlack {
+  fill: #111111;
+}
+svg.mascote .fillWhite {
+  fill: #f8f8f8;
+}
+
+/* ================== FORMULÁRIO DE MENSAGEM ================== */
+form#msgForm {
+  margin-top: 70px;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+textarea#userMsg {
+  width: 92%;
+  min-height: 110px;
+  border-radius: 18px;
+  border: 2.8px solid #ff1f3d;
+  background: #111111;
+  color: #f8f8f8;
+  font-family: 'Georgia', serif;
+  font-size: 1.2rem;
+  padding: 18px 22px;
+  resize: none;
+  box-shadow: 0 0 22px #ff1f3d;
+  transition: border-color 0.4s ease;
+  user-select: text;
+}
+textarea#userMsg:focus {
+  outline: none;
+  border-color: #ff555d;
+  box-shadow: 0 0 36px #ff555d;
+}
+button#submitMsg {
+  background: #ff1f3d;
+  color: white;
+  font-weight: 700;
+  font-size: 1.3rem;
+  border-radius: 48px;
+  border: none;
+  padding: 16px 64px;
+  box-shadow: 0 0 38px #ff1f3d;
+  cursor: pointer;
+  transition: background-color 0.35s ease, transform 0.35s ease;
+  user-select: none;
+}
+button#submitMsg:hover,
+button#submitMsg:focus {
+  background: white;
+  color: #ff1f3d;
+  transform: scale(1.08);
+  outline: none;
+}
+
+/* ================== ÁREA DE MENSAGEM ENVIADA ================== */
+#userMessageDisplay {
+  max-width: 740px;
+  margin: 45px auto 0 auto;
+  padding: 26px 36px;
+  background: rgba(255, 31, 61, 0.18);
+  border-radius: 32px;
+  box-shadow: 0 0 46px #ff1f3d;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffe3e3;
+  text-align: center;
+  user-select: text;
+  opacity: 0;
+  transition: opacity 1.25s ease;
+}
+#userMessageDisplay.show {
+  opacity: 1;
+}
+
+/* ================== RAIN WORDS ================== */
+#rainWords {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 7;
+}
+.rainWord {
+  position: absolute;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: #ff1f3d;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.23;
+  text-shadow: 0 0 9px #ff1f3d;
+  animation: fallWord linear forwards;
+}
+@keyframes fallWord {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+/* ================== RODAPÉ ================== */
+footer {
+  text-align: center;
+  padding: 22px 10px 18px 10px;
+  font-size: 1.05rem;
+  color: #ff1f3d;
+  user-select: none;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 14px #ff1f3d;
+  background: linear-gradient(90deg, #000000cc 0%, #ff1f3d 30%, #000000cc 100%);
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  border-top: 2px solid #ff1f3d;
+}
+
+/* ================== MENSAGEM FINAL ================== */
+#finalMessage {
+  margin-top: 50px;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #ff1f3d;
+  text-align: center;
+  text-shadow: 0 0 24px #ff1f3d;
+  user-select: text;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+#finalMessage.show {
+  opacity: 1;
+  animation: pulseGlow 1.6s infinite alternate;
+}
+@keyframes pulseGlow {
+  from {
+    text-shadow: 0 0 12px #ff1f3d;
+  }
+  to {
+    text-shadow: 0 0 36px #ff1f3d;
+  }
+}
+
+/* ================== ANIMAÇÕES SVG + DETALHES =============== */
+@keyframes pawPrintMove {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(3px, -4px) rotate(8deg);}
+}
+svg.mascote path.pawPrint {
+  animation: pawPrintMove 3.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* ================== NEVE VERMELHA SUAVE =============== */
+#snowCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ================== SCROLL PARALLAX TEXTOS ================== */
+[data-parallax] {
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+[data-parallax].active {
+  transform: translateY(0);
+  opacity: 1 !important;
+}
+
+/* ================== CORAÇÕES SEGUINDO MOUSE ================== */
+.heart {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: #ff1f3d;
+  transform: rotate(-45deg);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+}
+.heart::before, .heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff1f3d;
+  border-radius: 50%;
+}
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+.heart::after {
+  top: 0;
+  left: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Fundo neve vermelha -->
+<canvas id="snowCanvas" aria-hidden="true"></canvas>
+
+<!-- Fundo chuva de palavras -->
+<div id="rainWords" aria-hidden="true"></div>
+
+<main class="wrapper" role="main" aria-label="Site romântico para Gabriela">
+
+<h1 tabindex="0" aria-label="Título principal: Gabriela, o amor eterno">Gabriela, o amor eterno ❤️</h1>
+
+<section aria-label="Poema: Lobo e Cachorro">
+<h2 class="section-title" tabindex="0">Lobo e Cachorro</h2>
+<p class="poem-block" data-parallax style="animation-delay: 0.5s;">No silêncio da noite, o lobo uiva,</p>
+<p class="poem-block" data-parallax style="animation-delay: 1.4s;">Protegendo a alcateia com olhar que brilha,</p>
+<p class="poem-block" data-parallax style="animation-delay: 2.3s;">Fiel e forte, nunca desvia,</p>
+<p class="poem-block" data-parallax style="animation-delay: 3.1s;">Assim como eu, que em você confia.</p>
+</section>
+
+<section aria-label="Poema: Amor de Cachorro">
+<h2 class="section-title" tabindex="0">Amor de Cachorro</h2>
+<p class="poem-block" data-parallax style="animation-delay: 4.2s;">No olhar sincero do cachorro, há carinho,</p>
+<p class="poem-block" data-parallax style="animation-delay: 5.0s;">Lealdade pura, um amor que é caminho,</p>
+<p class="poem-block" data-parallax style="animation-delay: 5.9s;">Com você, Gabriela, encontro abrigo,</p>
+<p class="poem-block" data-parallax style="animation-delay: 6.7s;">No seu abraço, todo o perigo.</p>
+</section>
+
+<section aria-label="Poema: Promessa">
+<h2 class="section-title" tabindex="0">Promessa</h2>
+<p class="poem-block" data-parallax style="animation-delay: 7.8s;">Prometo ser seu lobo fiel e protetor,</p>
+<p class="poem-block" data-parallax style="animation-delay: 8.7s;">Com coragem e amor no peito e calor,</p>
+<p class="poem-block" data-parallax style="animation-delay: 9.5s;">Guiar teus passos em noites escuras,</p>
+<p class="poem-block" data-parallax style="animation-delay: 10.3s;">Ser seu abrigo contra todas as alturas.</p>
+</section>
+
+<section aria-label="Poema: Esperança Eterna">
+<h2 class="section-title" tabindex="0">Esperança Eterna</h2>
+<p class="poem-block" data-parallax style="animation-delay: 11.6s;">E quando o mundo pesar sobre seus ombros,</p>
+<p class="poem-block" data-parallax style="animation-delay: 12.4s;">Lembre-se do amor que é infinito, profundo,</p>
+<p class="poem-block" data-parallax style="animation-delay: 13.2s;">Entre lobo e cachorro, no laço bendito,</p>
+<p class="poem-block" data-parallax style="animation-delay: 14.0s;">Estarei sempre contigo, em todo conflito.</p>
+</section>
+
+<!-- Botão surpresa -->
+<button class="btn-main" id="btnSurprise" aria-label="Revelar mensagem especial para Gabriela">
+  Clique aqui para uma surpresa, Gabriela 💖
+</button>
+
+<!-- Mensagem final -->
+<div id="finalMessage" tabindex="0" aria-live="polite"></div>
+
+<!-- Formulário para mensagem do usuário -->
+<form id="msgForm" aria-label="Formulário para enviar mensagem para Gabriela">
+  <label for="userMsg" style="display:none;">Mensagem para Gabriela</label>
+  <textarea id="userMsg" placeholder="Escreva uma mensagem especial para Gabriela..."></textarea>
+  <button type="submit" id="submitMsg">Enviar mensagem</button>
+</form>
+
+<!-- Exibição da mensagem enviada -->
+<div id="userMessageDisplay" tabindex="0" aria-live="polite" aria-atomic="true"></div>
+
+<!-- Container mascotes SVG -->
+<div id="mascotesContainer" aria-label="Desenhos do lobo e do cachorro para Gabriela" role="img" aria-describedby="mascotesDesc">
+  <svg class="mascote" role="img" aria-labelledby="titleWolf" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <title id="titleWolf">Lobo estilizado para Gabriela</title>
+    <circle class="fillBlack" cx="32" cy="32" r="30" />
+    <path d="M20 15 L44 15 L54 40 L10 40 Z" fill="#ff1f3d" />
+    <path d="M32 20 L40 40 L24 40 Z" fill="#f8f8f8" />
+    <circle cx="28" cy="28" r="3" fill="#111111" />
+    <circle cx="36" cy="28" r="3" fill="#111111" />
+  </svg>
+
+  <svg class="mascote" role="img" aria-labelledby="titleDog" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <title id="titleDog">Cachorro estilizado para Gabriela</title>
+    <circle class="fillBlack" cx="32" cy="32" r="30" />
+    <path d="M12 44 Q32 12 52 44 Z" fill="#ff1f3d" />
+    <circle class="fillWhite" cx="20" cy="38" r="6" />
+    <circle class="fillWhite" cx="44" cy="38" r="6" />
+    <circle cx="20" cy="38" r="2" fill="#111111" />
+    <circle cx="44" cy="38" r="2" fill="#111111" />
+  </svg>
+</div>
+
+<footer aria-label="Rodapé do site com crédito">
+  Feito com ❤️ e muita paixão para Gabriela - 2026
+</footer>
+
+<script>
+'use strict';
+
+/* ================== POEMAS: APARECER COM EFEITO ================== */
+const poemBlocks = document.querySelectorAll('.poem-block');
+poemBlocks.forEach((block, index) => {
+  block.style.animation = `fadeUp 1.2s ease forwards`;
+  block.style.animationDelay = `${index * 900 + 300}ms`;
+});
+
+/* ================== MENSAGEM SURPRESA ================== */
+const btnSurprise = document.getElementById('btnSurprise');
+const finalMessage = document.getElementById('finalMessage');
+
+btnSurprise.addEventListener('click', () => {
+  finalMessage.innerHTML = `Gabriela, meu amor, você é a luz que guia meus passos.  
+  Entre o lobo forte e o cachorro fiel, é você quem dá sentido a tudo.  
+  <span style="color:#ffe3e3;">Nosso amor é uma história eterna, repleta de cuidado, coragem e carinho.</span> ❤️`;
+  finalMessage.classList.add('show');
+  finalMessage.focus();
+  startMusic();
+});
+
+/* ================== MÚSICA ROMÂNTICA ================== */
+let audio = new Audio("https://cdn.pixabay.com/download/audio/2022/10/09/audio_1c3dbb6b6f.mp3?filename=romantic-background-music-11482.mp3");
+audio.loop = true;
+audio.volume = 0.13;
+
+function startMusic() {
+  if (audio.paused) audio.play().catch(() => {});
+}
+
+/* ================== CHUVA DE PALAVRAS CARINHOSAS ================== */
+const rainWordsContainer = document.getElementById('rainWords');
+const words = [
+  "Amor","Carinho","Fidelidade","Proteção","Paixão","Confiança",
+  "Abraço","Sorriso","Doçura","Felicidade","Força","Eternidade",
+  "Lealdade","Esperança","Companheirismo","Ternura","Calor","Luz"
+];
+function createRainWord() {
+  const span = document.createElement('span');
+  span.className = 'rainWord';
+  span.textContent = words[Math.floor(Math.random()*words.length)];
+  span.style.left = Math.random()*100+'vw';
+  span.style.top = '-2rem';
+  span.style.fontSize = (16+Math.random()*18)+'px';
+  span.style.animationDuration = (6+Math.random()*7)+'s';
+  rainWordsContainer.appendChild(span);
+  setTimeout(()=>{span.remove()},(6+Math.random()*7)*1000);
+}
+setInterval(createRainWord,300);
+
+/* ================== FORMULÁRIO DE MENSAGEM ================== */
+const form = document.getElementById('msgForm');
+const textarea = document.getElementById('userMsg');
+const userMsgDisplay = document.getElementById('userMessageDisplay');
+
+form.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  const text = textarea.value.trim();
+  if(!text) return alert("Por favor, escreva uma mensagem para a Gabriela.");
+  userMsgDisplay.textContent = text;
+  userMsgDisplay.classList.add('show');
+  textarea.value='';
+  userMsgDisplay.focus();
+  createFloatingMessage(text);
+});
+
+/* ================== MENSAGENS FLUTUANTES (bolhas) ================== */
+function createFloatingMessage(text){
+  const msgDiv=document.createElement('div');
+  msgDiv.textContent=text;
+  msgDiv.style.position='fixed';
+  msgDiv.style.left=(20+Math.random()*60)+'vw';
+  msgDiv.style.bottom='-3rem';
+  msgDiv.style.background='rgba(255,31,61,0.8)';
+  msgDiv.style.padding='12px 20px';
+  msgDiv.style.borderRadius='24px';
+  msgDiv.style.color='white';
+  msgDiv.style.fontWeight='700';
+  msgDiv.style.fontSize='1rem';
+  msgDiv.style.boxShadow='0 0 26px #ff1f3d';
+  msgDiv.style.userSelect='none';
+  msgDiv.style.zIndex=999999;
+  msgDiv.style.opacity='1';
+  msgDiv.style.transition='transform 5s ease, opacity 5s ease';
+  document.body.appendChild(msgDiv);
+  setTimeout(()=>{msgDiv.style.transform=`translateY(-110vh)`;msgDiv.style.opacity='0';},100);
+  setTimeout(()=>{msgDiv.remove()},5200);
+}
+
+/* ================== NEVE VERMELHA ================== */
+const snowCanvas=document.getElementById('snowCanvas');
+const ctxSnow=snowCanvas.getContext('2d');
+let snowflakes=[],maxFlakes=140;
+function Snowflake(){
+  this.x=Math.random()*snowCanvas.width;
+  this.y=Math.random()*snowCanvas.height;
+  this.radius=1+Math.random()*3;
+  this.speedY=0.5+Math.random()*1.8;
+  this.speedX=Math.sin(this.y)*0.2;
+  this.opacity=0.1+Math.random()*0.25;
+}
+Snowflake.prototype.update=function(){
+  this.y+=this.speedY; this.x+=this.speedX;
+  if(this.y>snowCanvas.height){this.y=-this.radius;this.x=Math.random()*snowCanvas.width;this.opacity=0.1+Math.random()*0.25;}
+  if(this.x>snowCanvas.width) this.x=0;
+  if(this.x<0) this.x=snowCanvas.width;
+};
+Snowflake.prototype.draw=function(){
+  ctxSnow.beginPath();
+  ctxSnow.arc(this.x,this.y,this.radius,0,Math.PI*2);
+  ctxSnow.fillStyle=`rgba(255,31,61,${this.opacity})`;
+  ctxSnow.shadowColor='rgba(255,31,61,0.5)';
+  ctxSnow.shadowBlur=5;
+  ctxSnow.fill();
+};
+function initSnowflakes(){snowflakes=[];for(let i=0;i<maxFlakes;i++){snowflakes.push(new Snowflake());}}
+function animateSnow(){ctxSnow.clearRect(0,0,snowCanvas.width,snowCanvas.height);snowflakes.forEach(flake=>{flake.update();flake.draw();});requestAnimationFrame(animateSnow);}
+function resizeCanvas(){snowCanvas.width=window.innerWidth;snowCanvas.height=window.innerHeight;}
+window.addEventListener('resize',()=>{resizeCanvas();initSnowflakes();});
+resizeCanvas();initSnowflakes();animateSnow();
+
+/* ================== PARALLAX ================== */
+function handleParallax(){
+  const parallaxElements=document.querySelectorAll('[data-parallax]');
+  const viewportHeight=window.innerHeight;
+  parallaxElements.forEach(el=>{
+    const rect=el.getBoundingClientRect();
+    if(rect.top<viewportHeight*0.85){
+      el.style.transform=`translateY(0)`; el.style.opacity=1; el.classList.add('active');
+    } else {
+      el.style.transform=`translateY(20px)`; el.style.opacity=0; el.classList.remove('active');
+    }
+  });
+}
+window.addEventListener('scroll',handleParallax);
+window.addEventListener('load',handleParallax);
+
+/* ================== CORAÇÕES SEGUINDO MOUSE ================== */
+document.addEventListener('mousemove',function(e){
+  const heart=document.createElement('div');heart.className='heart';
+  heart.style.left=e.clientX-10+'px';heart.style.top=e.clientY-10+'px';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),1200);
+});
+</script>
+
+</body>
+</html>
