@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Gabriela - Amor Supremo 💖</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:linear-gradient(135deg,#ff0000,#000000,#ffffff);
+  background-size:600% 600%;
+  animation:gradientBG 20s ease infinite;
+  color:#fff;
+  min-height:100vh;
+  overflow-x:hidden;
+  cursor:default;
+  position:relative;
+}
+@keyframes gradientBG{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+#main-container{
+  max-width:950px;
+  margin:20px auto;
+  padding:25px;
+  background:rgba(0,0,0,0.75);
+  border-radius:15px;
+  box-shadow:0 0 25px rgba(255,0,0,0.5);
+}
+h1{text-align:center;margin-bottom:20px;font-size:2.8rem;text-shadow:0 0 18px #ff1a1a;}
+#texto{
+  background:#000;
+  color:#fff;
+  padding:22px;
+  border-radius:12px;
+  min-height:220px;
+  font-size:1.7rem;
+  line-height:1.8;
+  letter-spacing:0.04em;
+  opacity:0;
+  transition:opacity 0.8s ease;
+  user-select:none;
+  position:relative;
+  text-align:center;
+}
+#botoes-container{display:flex;flex-wrap:wrap;justify-content:center;margin-bottom:20px;}
+button{
+  background:linear-gradient(45deg,#ff0000,#ffffff);
+  color:#000;
+  border:none;
+  padding:12px 22px;
+  margin:6px;
+  font-size:1.2rem;
+  border-radius:30px;
+  cursor:pointer;
+  box-shadow:0 0 12px #ff4d4d;
+  transition:transform 0.2s ease,box-shadow 0.3s ease;
+}
+button:hover{transform:scale(1.1);box-shadow:0 0 20px #ff0000;}
+#emoji-gallery{font-size:3rem;text-align:center;margin:15px 0;cursor:pointer;text-shadow:0 0 15px #ff6666;user-select:none;}
+#sorteTexto{text-align:center;font-size:1.3rem;margin:15px 0;font-style:italic;}
+#agradecimentos{background:#111;color:#f77;padding:15px;border-radius:12px;margin:15px 0;min-height:120px;font-size:1.1rem;overflow-y:auto;}
+#abraco{text-align:center;font-size:2rem;color:#ff4d4d;display:none;margin:10px 0;user-select:none;}
+.heart,.confete,.flor,.estrela,.mensagemFlutuante{position:fixed;pointer-events:none;user-select:none;}
+.heart{width:20px;height:20px;clip-path:polygon(50% 0%,85% 25%,100% 50%,85% 75%,50% 100%,15% 75%,0% 50%,15% 25%);
+background:linear-gradient(135deg,#ff0000,#ff9a9e);animation:floatUp 4s ease forwards;}
+.flor{font-size:24px;}
+.confete{width:8px;height:8px;border-radius:50%;background:linear-gradient(45deg,#ff0,#f0f,#f00);animation:confeteFall 3s linear forwards;}
+.estrela{width:3px;height:3px;background:#fff;border-radius:50%;animation:pisca 2s infinite;}
+.mensagemFlutuante{background:rgba(255,0,0,0.7);padding:8px 12px;border-radius:10px;color:#fff;font-size:1rem;animation:floatMessage 6s ease forwards;}
+@keyframes floatUp{0%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(-150px) scale(1.2);}}
+@keyframes confeteFall{0%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(200px) rotate(360deg) scale(1.2);}}
+@keyframes pisca{0%,100%{opacity:0;}50%{opacity:1;}}
+@keyframes floatMessage{0%{opacity:0;transform:translateY(0) scale(0.5);}50%{opacity:1;transform:translateY(-50px) scale(1);}100%{opacity:0;transform:translateY(-120px) scale(1.2);}}
+</style>
+</head>
+<body>
+<div id="main-container">
+<h1>Para Gabriela, com todo meu amor 💖</h1>
+<div id="texto">Clique em um botão abaixo e receba uma surpresa especial!</div>
+<div id="botoes-container">
+<button onclick="mostrarMensagem('romantico')">Romântico</button>
+<button onclick="mostrarMensagem('fofo')">Fofo</button>
+<button onclick="mostrarMensagem('apaixonado')">Apaixonado</button>
+<button onclick="mostrarMensagem('presente')">Presente Misterioso</button>
+<button onclick="mostrarMensagem('abraço')">Abraço Virtual</button>
+<button onclick="mostrarMensagem('chuva')">Chuva de Corações</button>
+<button onclick="mostrarMensagem('flores')">Flores Animadas</button>
+<button onclick="mostrarMensagem('mensagemSecreta')">Mensagem Secreta</button>
+<button onclick="mostrarMensagem('cachorro')">🐶 Cachorro</button>
+<button onclick="mostrarMensagem('lobo')">🐺 Lobo</button>
+<button onclick="mostrarMensagem('pantera')">🐆 Pantera Negra</button>
+<button onclick="mostrarMensagem('tigre')">🐅 Tigre Branco</button>
+</div>
+<div id="emoji-gallery" title="Clique para mudar emoji">💖</div>
+<div id="sorteTexto"></div>
+<div id="agradecimentos"></div>
+<div id="abraco"></div>
+
+<script>
+const mensagens={
+  romantico:[
+    "Você é linda demais!","Cada dia ao seu lado é único e especial.","Seu sorriso ilumina meu mundo inteiro.",
+    "Amar você é meu maior presente.","Você é minha inspiração diária.","Quando penso em você, tudo fica perfeito.",
+    "Seu olhar me aquece a alma.","Quero passar todos os meus dias ao seu lado.",
+    "Cada momento com você é inesquecível.","Você faz meu coração bater mais forte.","Estar contigo é como viver em um sonho."
+  ],
+  fofo:[
+    "Seu jeitinho me encanta sempre.","Quero cuidar de você para sempre.","Você é meu porto seguro, minha paz.",
+    "Você é a doçura que colore meus dias.","Seu abraço me deixa leve e feliz.","Adoro ouvir sua risada.",
+    "Você merece todo carinho do mundo.","Você me faz querer ser melhor a cada dia.",
+    "Nada se compara à sua ternura.","Cada mensagem sua me faz sorrir.","Você é meu pedacinho de felicidade."
+  ],
+  apaixonado:[
+    "Meu coração bate forte só por você.","Não consigo parar de pensar em você.","Quero estar contigo em todos os momentos.",
+    "Amar você é viver em magia.","Você me completa de uma forma única.","A cada dia meu amor cresce mais.",
+    "Quando estamos juntos, o mundo desaparece.","Você é meu sonho mais lindo.","Meu amor por você não tem limites.",
+    "Você é minha razão de sorrir todos os dias.","Sem você, nada seria tão especial."
+  ],
+  presente:[
+    "🎁 Um presente especial para você...","Você é minha maior inspiração!","Lembre-se sempre: você é meu mundo!",
+    "Cada presente é um pedaço do meu coração para você.","Abra e sinta meu carinho dentro dele.",
+    "Este é apenas um símbolo do meu amor.","Guarde este presente e meu coração junto dele.",
+    "Um mimo cheio de afeto só para você.","Espero que este presente te faça sorrir.",
+    "Ele vem com todo meu amor e cuidado.","Cada detalhe foi pensado em você."
+  ],
+  abraço:["🤗 Abraço apertado para você, Gabriela!"],
+  chuva:["💖💖💖","Mais amor flutuando para você!","💞💞💞"],
+  flores:["🌸🌼🌺","Que seu dia floresça sempre!","🌹🌷💐"],
+  mensagemSecreta:[
+    "✨✨✨ Uma surpresa especial só para você! ✨✨✨","Guarde este momento em seu coração!",
+    "💖💖💖","Uma mensagem secreta cheia de carinho.","Meu amor está escondido aqui só para você.",
+    "Sinta meu abraço através dessas palavras.","Cada letra carrega meu afeto por você.",
+    "Um recado secreto que ilumina seu dia.","Abra seu coração e receba todo meu amor.",
+    "A surpresa é que te amo infinitamente."
+  ],
+  cachorro:[
+    "🐶 Olá, Gabriela! Um amigo fiel te manda amor!","Seu sorriso ilumina até os dias nublados!",
+    "Sou seu amigo leal, sempre aqui para você.","Amor e carinho vindo direto do meu coração.",
+    "Sempre pronto para te ver feliz!","Cuidar de você é minha maior alegria.",
+    "Vamos brincar juntos com alegria e amor.","Você é minha pessoa favorita!",
+    "Que seu dia seja cheio de patinhas felizes.","Sempre ao seu lado, mesmo nas tempestades."
+  ],
+  lobo:[
+    "🐺 O lobo te protege, meu amor!","Sempre ao seu lado, em qualquer aventura!",
+    "Meu amor é selvagem e fiel como eu.","Nosso laço é forte como uma alcateia.",
+    "Sinta meu carinho protetor envolvendo você.","Você é minha parceira em todas as jornadas.",
+    "Nunca estou longe do seu coração.","Com você, qualquer aventura é mágica.",
+    "Meu coração uiva por você a cada momento.","Sinta-se segura no abraço do meu amor."
+  ],
+  pantera:[
+    "🐆 Pantera Negra te envia força e carinho!","Você é majestosa e incrível!","Minha admiração por você não tem limites.",
+    "Cada passo seu é lindo e poderoso.","Meu amor por você é intenso como a noite.",
+    "Você ilumina minha vida com sua presença.","A beleza da pantera é igual à sua alma.",
+    "Sinta minha proteção e carinho ao seu redor.","Você é única, forte e maravilhosa.",
+    "Meu amor se curva à sua grandiosidade."
+  ],
+  tigre:[
+    "🐅 Tigre Branco te envolve com elegância e amor!","Sinta meu carinho selvagem e puro!","Meu amor é intenso, assim como sua presença.",
+    "Você é majestosa e me fascina todos os dias.","Cada momento contigo é um rugido de felicidade.",
+    "Minha vida é mais viva com você nela.","O poder do tigre é nada comparado ao seu brilho.",
+    "Sempre ao seu lado, ferozmente apaixonado.","Você é minha rainha, minha luz.","Nosso amor é branco, puro e infinito."
+  ]
+};
+
+const indices={};
+const textoEl=document.getElementById("texto");
+const emojiGallery=document.getElementById("emoji-gallery");
+const sorteTexto=document.getElementById("sorteTexto");
+const agradecimentosDiv=document.getElementById("agradecimentos");
+const abracoDiv=document.getElementById("abraco");
+
+function mostrarMensagem(tipo){
+  textoEl.style.opacity=0; sorteTexto.textContent=""; abracoDiv.style.display="none";
+  if(!indices[tipo]) indices[tipo]=0;
+
+  if(tipo==="abraço"){abracoDiv.style.display="block"; abracoDiv.textContent=mensagens.abraço[0]; return;}
+  if(tipo==="chuva"){for(let i=0;i<30;i++) criarCoracao(Math.random()*window.innerWidth,Math.random()*window.innerHeight); return;}
+  if(tipo==="flores"){for(let i=0;i<20;i++) criarFlor(Math.random()*window.innerWidth,Math.random()*window.innerHeight); return;}
+  if(tipo==="mensagemSecreta"){for(let i=0;i<15;i++) criarMensagemFlutuante(mensagens.mensagemSecreta[Math.floor(Math.random()*mensagens.mensagemSecreta.length)]); return;}
+
+  const lista=mensagens[tipo];
+  textoEl.textContent=lista[indices[tipo]];
+  fadeInTexto();
+  indices[tipo]++; if(indices[tipo]>=lista.length) indices[tipo]=0;
+}
+
+function fadeInTexto(){textoEl.style.opacity=0; setTimeout(()=>{textoEl.style.opacity=1;},100);}
+const emojis=["💖","😍","🥰","😘","💕","🌹","💌","✨"];
+let emojiIndex=0;
+emojiGallery.onclick=()=>{emojiIndex++; if(emojiIndex>=emojis.length)emojiIndex=0; emojiGallery.textContent=emojis[emojiIndex];}
+
+function criarCoracao(x,y){const cor=document.createElement("div");cor.classList.add("heart");cor.style.left=x+"px";cor.style.top=y+"px";document.body.appendChild(cor);setTimeout(()=>cor.remove(),4000);}
+function criarFlor(x,y){const flor=document.createElement("div");flor.textContent="🌸";flor.classList.add("flor");flor.style.left=x+"px";flor.style.top=y+"px";document.body.appendChild(flor);setTimeout(()=>flor.remove(),4000);}
+function criarMensagemFlutuante(texto){const msg=document.createElement("div");msg.classList.add("mensagemFlutuante");msg.style.left=(Math.random()*window.innerWidth-100)+"px";msg.style.top=window.innerHeight+"px";msg.textContent=texto;document.body.appendChild(msg);setTimeout(()=>msg.remove(),6000);}
+
+// Efeito de amor no clique
+document.body.addEventListener("click",(e)=>{
+  for(let i=0;i<8;i++) criarCoracao(e.pageX+Math.random()*60-30,e.pageY+Math.random()*60-30);
+  for(let i=0;i<4;i++) criarFlor(e.pageX+Math.random()*60-30,e.pageY+Math.random()*60-30);
+});
+</script>
+</body>
+</html>
