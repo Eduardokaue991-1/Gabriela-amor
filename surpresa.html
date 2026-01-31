@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Gaby 💖</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(270deg, #ff0000, #ffffff, #000000);
+      background-size: 600% 600%;
+      animation: gradientBG 20s ease infinite;
+      color: #fff;
+      position: relative;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .card {
+      background: rgba(255,255,255,0.95);
+      color: #333;
+      padding: 30px;
+      max-width: 450px;
+      width: 90%;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(15px);
+      transition: all 0.8s ease;
+      z-index: 2;
+      position: relative;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      min-height: 50px;
+    }
+
+    button, a {
+      margin-top: 20px;
+      padding: 12px 24px;
+      border-radius: 12px;
+      border: none;
+      background: #ff0000;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    button:hover, a:hover {
+      background: #cc0000;
+    }
+
+    /* Corações animados */
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: rgba(255,0,0,0.8);
+      animation: floatUp linear infinite;
+      user-select: none;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0;}
+      20% { opacity: 1;}
+      100% { transform: translateY(-10vh) scale(1); opacity: 0;}
+    }
+
+    /* Palavras flutuantes */
+    .word {
+      position: absolute;
+      font-size: 18px;
+      font-weight: bold;
+      color: rgba(255,255,255,0.3);
+      user-select: none;
+      pointer-events: none;
+      animation: floatWord linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes floatWord {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0;}
+      20% { opacity: 1;}
+      100% { transform: translateY(-10vh) scale(1); opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="card" id="app"></div>
+
+<script>
+  const app = document.getElementById("app");
+
+  const textos = [
+    { titulo: "Oi, Gaby… 💕", conteudo: "Isso aqui não é só um site. É um pedacinho do que eu sinto e queria te mostrar com calma." },
+    { titulo: "Sobre você 🌸", conteudo: "Gaby, você tem um jeito leve que muda o ambiente sem perceber. Seu sorriso chega antes das palavras e faz tudo parecer mais fácil." },
+    { titulo: "Poema ✨", conteudo: "Não foi de repente, foi aos poucos. Uma conversa aqui, uma risada ali, até você virar pensamento diário." },
+    { titulo: "A verdade 💖", conteudo: "Em algum momento, você deixou de ser acaso e virou escolha. Daquelas que o coração faz antes mesmo da cabeça entender." },
+    { titulo: "Frase especial 💌", conteudo: "Gaby, você é a calma que eu não sabia que precisava. Cada momento com você é único e inesquecível." },
+    { titulo: "Agora sim… 💍", conteudo: "Se você leu tudo até aqui, é porque chegou no que mais importa. Respira fundo… e clica com carinho ❤️", final: true }
+  ];
+
+  let index = 0;
+
+  function mostrarTexto(texto) {
+    app.classList.remove("show");
+    setTimeout(() => {
+      app.innerHTML = `<h1>${texto.titulo}</h1><p id="conteudo"></p>`;
+      app.classList.add("show");
+      const p = document.getElementById("conteudo");
+      typeWriter(texto.conteudo, p, 0, () => {
+        if (texto.final) {
+          const link = document.createElement("a");
+          link.href = "https://gifft.me/pt/o/hm/6q37z0ktbywzzm9fa8dry81x";
+          link.target = "_blank";
+          link.textContent = "Clique aqui 💖";
+          app.appendChild(link);
+        } else {
+          const btn = document.createElement("button");
+          btn.textContent = "Continuar ➡️";
+          btn.onclick = next;
+          app.appendChild(btn);
+        }
+      });
+    }, 500);
+  }
+
+  function typeWriter(text, element, i, callback) {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      setTimeout(() => typeWriter(text, element, i + 1, callback), 25);
+    } else callback();
+  }
+
+  function next() { index++; if (index < textos.length) mostrarTexto(textos[index]); }
+
+  mostrarTexto(textos[index]);
+
+  // Corações animados
+  function criarCoracao() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = 12 + Math.random() * 24 + "px";
+    heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 10000);
+  }
+
+  setInterval(criarCoracao, 400);
+
+  // Palavras flutuantes no fundo
+  const palavras = ["Gaby 💖", "Amor", "Você", "Meu ❤️", "Sempre", "Juntos"];
+  function criarPalavra() {
+    const word = document.createElement("div");
+    word.classList.add("word");
+    word.innerHTML = palavras[Math.floor(Math.random() * palavras.length)];
+    word.style.left = Math.random() * 100 + "vw";
+    word.style.fontSize = 14 + Math.random() * 24 + "px";
+    word.style.animationDuration = 8 + Math.random() * 7 + "s";
+    document.body.appendChild(word);
+    setTimeout(() => word.remove(), 15000);
+  }
+
+  setInterval(criarPalavra, 600);
+</script>
+
+</body>
+</html>
